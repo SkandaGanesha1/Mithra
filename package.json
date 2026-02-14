@@ -1,0 +1,58 @@
+{
+  "name": "bhasha-bridge-ai",
+  "version": "1.0.0",
+  "description": "Autonomous multilingual micro-app generator using Google Antigravity and Gemini 3",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:genkit": "node src/genkit/index.js",
+    "start:orchestrator": "node src/orchestrator/index.js",
+    "start:agents": "node src/scripts/start-agents.js",
+    "agents:start": "node src/scripts/start-agents.js",
+    "agents:monitor": "node src/scripts/monitor-agents.js",
+    "agents:stop": "node src/scripts/stop-agents.js",
+    "dev": "nodemon src/index.js",
+    "dev:genkit": "nodemon src/genkit/index.js",
+    "test": "jest",
+    "test:integration": "jest --testPathPattern=integration",
+    "test:agents": "jest --testPathPattern=agents",
+    "lint": "eslint src/",
+    "format": "prettier --write \"src/**/*.js\""
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "multilingual",
+    "gemini",
+    "antigravity",
+    "india",
+    "hackathon"
+  ],
+  "author": "Skanda Ganesha L",
+  "license": "MIT",
+  "dependencies": {
+    "@genkit-ai/core": "^0.5.0",
+    "@genkit-ai/googleai": "^0.5.0",
+    "@genkit-ai/firebase": "^0.5.0",
+    "@genkit-ai/flow": "^0.5.0",
+    "@google-cloud/aiplatform": "^3.0.0",
+    "@google/generative-ai": "^0.2.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.0",
+    "express": "^4.18.0",
+    "firebase-admin": "^12.0.0",
+    "uuid": "^9.0.0",
+    "winston": "^3.11.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
