@@ -1,0 +1,444 @@
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.App-header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.App-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.App-header p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0 0;
+  opacity: 0.9;
+}
+
+.App-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.capture-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.capture-section h2 {
+  color: #333;
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  height: 480px;
+  margin: 1rem auto;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recording-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.countdown {
+  font-size: 5rem;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.recording-indicator {
+  color: #ff4444;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+}
+
+.placeholder.success {
+  background: #e8f5e9;
+}
+
+.placeholder .icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.placeholder p {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.capture-button,
+.stop-button,
+.submit-button,
+.reset-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.capture-button {
+  background: #4CAF50;
+  color: white;
+}
+
+.capture-button:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+.stop-button {
+  background: #f44336;
+  color: white;
+}
+
+.submit-button {
+  background: #667eea;
+  color: white;
+  font-size: 1.3rem;
+  padding: 1.5rem 3rem;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #5568d3;
+  transform: scale(1.05);
+}
+
+.submit-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.reset-button {
+  background: #ff9800;
+  color: white;
+  margin-left: 1rem;
+}
+
+.hint {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.status-message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.status-message.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-message.info {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-message.warning {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.submit-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.result-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.processing-info {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.processing-info p {
+  margin: 0.5rem 0;
+}
+
+.App-footer {
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  opacity: 0.9;
+}
+
+/* Audio Recorder Styles */
+.audio-recorder {
+  text-align: center;
+}
+
+.audio-visualizer {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  margin: 1rem auto;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recording-animation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pulse-circle {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(255, 68, 68, 0.3);
+  animation: pulse-grow 1.5s infinite;
+}
+
+@keyframes pulse-grow {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+.icon.recording {
+  font-size: 4rem;
+  z-index: 1;
+}
+
+.duration {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 1rem 0 0.5rem;
+}
+
+.status {
+  color: #f44336;
+  font-weight: 600;
+}
+
+/* Dynamic UI Styles */
+.generated-ui-container {
+  margin-top: 2rem;
+}
+
+.code-preview {
+  margin: 1rem 0;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.code-preview pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.medicine-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.medicine-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.dosage-info {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.timing-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.time-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 120px;
+}
+
+.time-slot .icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.emergency-button {
+  background: #f44336;
+  color: white;
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emergency-button:hover {
+  transform: scale(1.05);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.service-item {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+}
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.service-item h5 {
+  margin: 0;
+  color: #333;
+}
+
+.rating {
+  background: #ffc107;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.call-button {
+  display: inline-block;
+  background: #4CAF50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.ui-mode-badge {
+  display: inline-block;
+  background: #ff9800;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
