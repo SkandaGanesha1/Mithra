@@ -48,7 +48,9 @@ class AgentOrchestrator:
             "payload": message.payload
         })
         
-        # Limit context to last 1000 messages (within 1M token window)
+        # Limit context to manage token usage
+        # With Gemini 3 Pro's large context window, we can maintain extensive business history
+        # Adjust this limit based on actual token consumption
         if len(self.context_history) > 1000:
             self.context_history = self.context_history[-1000:]
         

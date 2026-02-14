@@ -69,7 +69,7 @@ WHATSAPP_FROM_NUMBER=whatsapp:+14155238886
 ```bash
 # Deploy main API
 gcloud functions deploy bharat-agent-api \
-  --runtime python39 \
+  --runtime python312 \
   --trigger-http \
   --allow-unauthenticated \
   --region asia-south1 \
@@ -79,7 +79,7 @@ gcloud functions deploy bharat-agent-api \
 
 # Deploy webhook handler
 gcloud functions deploy whatsapp-webhook \
-  --runtime python39 \
+  --runtime python312 \
   --trigger-http \
   --allow-unauthenticated \
   --region asia-south1 \
