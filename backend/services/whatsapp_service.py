@@ -4,7 +4,13 @@ Handles sending and receiving messages via WhatsApp
 """
 import logging
 from typing import Optional, Dict
-from twilio.rest import Client
+
+try:
+    from twilio.rest import Client
+    TWILIO_AVAILABLE = True
+except ImportError:
+    TWILIO_AVAILABLE = False
+    logging.warning("Twilio library not installed")
 
 from backend.config.settings import settings
 
@@ -18,7 +24,7 @@ class WhatsAppService:
     """
     
     def __init__(self):
-        if settings.WHATSAPP_ACCOUNT_SID and settings.WHATSAPP_AUTH_TOKEN:
+        if TWILIO_AVAILABLE and settings.WHATSAPP_ACCOUNT_SID and settings.WHATSAPP_AUTH_TOKEN:
             self.client = Client(
                 settings.WHATSAPP_ACCOUNT_SID,
                 settings.WHATSAPP_AUTH_TOKEN
@@ -26,7 +32,7 @@ class WhatsAppService:
             self.from_number = settings.WHATSAPP_FROM_NUMBER
         else:
             self.client = None
-            logger.warning("WhatsApp credentials not configured")
+            logger.warning("WhatsApp credentials not configured or Twilio not available")
     
     def send_message(self, to_number: str, message: str, media_url: Optional[str] = None) -> Dict:
         """
